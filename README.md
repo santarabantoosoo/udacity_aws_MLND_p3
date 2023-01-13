@@ -44,7 +44,11 @@ These were really variable. Sometimes I got problems with overtraining. Other ti
 
 
 ## Model Deployment
-**TODO**: Give an overview of the deployed model and instructions on how to query the endpoint with a sample input.
+**TODO**: Give an overview of the deployed model and instructions on how to query the endpoint with a sample input.  
+
+The deployed model is based on the best hyperparameters that were chosen from tuning. 
+We need to deserialize the images and convert them to JPEG. This is handled by the inference.py file. After a series of functions, we get a prediction. 
+
 
 **TODO** Remember to provide a screenshot of the deployed active endpoint in Sagemaker.
 
