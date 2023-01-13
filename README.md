@@ -17,6 +17,8 @@ Upload the data to an S3 bucket through the AWS Gateway so that SageMaker has ac
 ## Hyperparameter Tuning
 What kind of model did you choose for this experiment and why? Give an overview of the types of parameters and their ranges used for the hyperparameter search
 
+I tuned the hyperparameters, learning rate and number of epochs and based on tuning results, I have chosen the model with the best hyperparameters. 
+
 Remember that your README should:
 - Include a screenshot of completed training jobs
 - Logs metrics during the training process
@@ -26,8 +28,17 @@ Remember that your README should:
 ## Debugging and Profiling
 **TODO**: Give an overview of how you performed model debugging and profiling in Sagemaker
 
+Using the debugger I checked the following: 
+loss_not_decreasing
+LowGPUUtilization
+vanishing_gradient
+overfit
+overtraining
+poor_weight_initialization
+
 ### Results
 **TODO**: What are the results/insights did you get by profiling/debugging your model?
+These were really variable. Sometimes I got problems with overtraining. Other times, I get problems with vanishing gradient. 
 
 **TODO** Remember to provide the profiler html/pdf file in your submission.
 
