@@ -75,6 +75,7 @@ def train(model, train_loader, valid_loader, criterion, optimizer):
     
     batch_size = args.batch_size
     epoch = args.epochs
+    lr = args.lr
 
     
     model.train()  # should we remove this?
@@ -111,7 +112,7 @@ def train(model, train_loader, valid_loader, criterion, optimizer):
 #         epoch_time = time.time() - start
 #         epoch_times.append(epoch_time)
         
-        print(f"Epoch {e}: Train Loss {running_loss/len(train_loader.dataset)},Accuracy={100*(correct/len(train_loader.dataset))}, Validation loss               {val_loss/len(valid_loader)}, Val_Accuracy={100*(val_correct/len(valid_loader))}")
+        print(f"Epoch {e}: Train Loss {running_loss/len(train_loader.dataset)},Accuracy={100*(correct/len(train_loader.dataset))}, Validation loss               {val_loss/len(valid_loader)}, Val_Accuracy={100*(val_correct/len(valid_loader))}  batch size: {batch_size}  -- learning rate: {lr} ")
         # hamza may need to implement train stop if the below condition is reached 
         #TODO: Finish the rest of the training code
         # The code should stop training when the validation accuracy

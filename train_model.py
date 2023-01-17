@@ -79,8 +79,9 @@ def train(model, train_loader, valid_loader, criterion, optimizer):
     hook = get_hook(create_if_not_exists=True)
     hook.set_mode(modes.TRAIN)
     batch_size = args.batch_size
+    lr = args.lr
     epoch = args.epochs
-    lowest_accuracy = 0.001   #cut-off for stopping training 
+    lowest_accuracy = 0.000001   #cut-off for stopping training 
     old_val_acc = 0 # initializing the validation accuracy for later comparison 
     
     if hook:
@@ -125,13 +126,14 @@ def train(model, train_loader, valid_loader, criterion, optimizer):
 
 
 
-        print(f"Epoch {e}: Train Loss {running_loss/len(train_loader.dataset)},Accuracy={100*(correct/len(train_loader.dataset))}, Validation loss               {val_loss/len(valid_loader)}, Val_Accuracy={100*(val_correct/len(valid_loader))}")
+        print(f"Epoch {e}: Train Loss {running_loss/len(train_loader.dataset)},Accuracy={100*(correct/len(train_loader.dataset))}, Validation loss               {val_loss/len(valid_loader)}, Val_Accuracy={100*(val_correct/len(valid_loader))}  batch size: {batch_size}  -- learning rate: {lr}")
         
         new_val_acc = 100*(val_correct/len(valid_loader))
         
         acc_diff = new_val_acc - old_val_acc 
                            
         if acc_diff < lowest_accuracy: 
+            print('no improvement in accuracy')
             break
         
         old_val_acc = new_val_acc
