@@ -42,9 +42,17 @@ At first, I set the appropriate debug mode in both training and evaluation funct
 
 Next, I created a trial in the notebook. Finally, I created the profiler based on the trial. It was exported to s3 bucket. I then imported it to the notebook. 
 
+Using the debugger I checked the following: 
+loss_not_decreasing
+LowGPUUtilization
+vanishing_gradient
+overfit
+overtraining
+poor_weight_initialization
+
 ### Results
 **TODO**: What are the results/insights did you get by profiling/debugging your model?
-Training took 1432 seconds 
+These were really variable. Sometimes I got problems with overtraining. Other times, I get problems with vanishing gradient. 
 
 The following table shows a profiling summary of the Debugger built-in rules. The table is sorted by the rules that triggered the most frequently. During your training job, the Dataloader rule was the most frequently triggered. It processed 12 datapoints and was triggered 1 times.
 
@@ -56,7 +64,11 @@ Dataloader was the only triggered rule. It was triggered once.
 Done 
 
 ## Model Deployment
-**TODO**: Give an overview of the deployed model and instructions on how to query the endpoint with a sample input.
+**TODO**: Give an overview of the deployed model and instructions on how to query the endpoint with a sample input.  
+
+The deployed model is based on the best hyperparameters that were chosen from tuning. 
+We need to deserialize the images and convert them to JPEG. This is handled by the inference.py file. After a series of functions, we get a prediction. 
+
 
 I deployed a model trained on the best hyperparameters. In order to query this endpoint, a sample image is provided to the endpoint after preprocessing. The inference2.py file handles the input, model prediction and the returning of prediction. 
 
